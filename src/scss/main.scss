@@ -1,0 +1,25 @@
+// base
+@import "config";
+@import "mixins";
+@import "fonts";
+
+// templates
+@import "./templates/container";
+@import "./templates/button";
+@import "./templates/section";
+@import "./templates/title";
+@import "./templates/paragraph";
+@import "./templates/item-title";
+@import "templates/auxiliary";
+
+// index.html
+@import "./components/header";
+@import "./components/hero";
+@import "./components/about";
+@import "./components/experience";
+@import "./components/features";
+@import "./components/gallery";
+@import "./components/contact-us";
+@import "./components/review";
+@import "./components/contact";
+@import "./components/footer";

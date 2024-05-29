@@ -1,0 +1,11 @@
+.section {
+    margin: 200px 0;
+
+    @include tablet {
+        margin: 120px 0;
+    }
+
+    @include mobile {
+        margin: 70px 0;
+    }
+}

@@ -1,0 +1,103 @@
+.title {
+    $this: &;
+    @include flex-all-center;
+    margin-bottom: 45px;
+
+    &.is-primary {
+        justify-content: flex-start;
+        
+        #{$this}__text {
+            color: var(--color-1--4);
+            font-size: 72px;
+
+            &::before {
+                content: none;
+            }
+
+            @include tablet {
+                font-size: 60px;
+            }
+
+            @include mobile {
+                font-size: 42px;
+            }
+
+            span {
+                color: var(--color-1--3);
+            }
+        }
+    }
+
+    &.is-secondary {
+        #{$this}__text {
+            &::before {
+                background-image: inline-svg('<svg xmlns="http://www.w3.org/2000/svg" fill="#{$color-1--2}" version="1.1" viewBox="0 0 86.6 92.6"><path d="M53.7,92.5s16.7-1.5,25.9-15.9,7.2-33.4,6-48.8C84.3,12.3,73.7,1,59.9,0s-16,11-30.4,18.3c-14.4,7.3-19.5,7-27,21.1s1.5,34.8,19.3,44.9c17.8,10.1,31.8,8.2,31.8,8.2Z"/></svg>');
+            }
+        }
+    }
+
+    &.is-left  {
+        justify-content: flex-start;
+
+        @include tablet {
+            justify-content: center;
+        }
+
+        #{$this}__text {
+            &::before {
+                left: -30px;
+                transform: translateY(-50%);
+
+                @include tablet {
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            @include on-event {
+                &::before {
+                    transform: translateY(-50%) scale(1.2);
+
+                    @include tablet {
+                        transform: translate(-50%, -50%) scale(1.2);
+                    }
+                }
+            }
+        }
+    }
+
+    &__text {
+        @include font(var(--typo-1), 60px, var(--fw-bold));
+        color: var(--color-1--3);
+        position: relative;
+        z-index: 1;
+
+        @include tablet {
+            font-size: 42px;
+        }
+        
+        @include on-event {
+            &::before {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        &::before {
+            @include trs;
+            @include absolute(50%, null, null, 50%);
+            @include size(87px, 93px);
+            background: {
+                image: inline-svg('<svg xmlns="http://www.w3.org/2000/svg" fill="#{$color-2--2}" version="1.1" viewBox="0 0 86.6 92.6"><path d="M53.7,92.5s16.7-1.5,25.9-15.9,7.2-33.4,6-48.8C84.3,12.3,73.7,1,59.9,0s-16,11-30.4,18.3c-14.4,7.3-19.5,7-27,21.1s1.5,34.8,19.3,44.9c17.8,10.1,31.8,8.2,31.8,8.2Z"/></svg>');
+                repeat: no-repeat;
+                size: cover;
+            };
+            content: '';
+            transform: translate(-50%, -50%);
+            z-index: -1;
+    
+            @include tablet {
+                @include size(70px, 75px);
+            }
+        }
+    }
+}

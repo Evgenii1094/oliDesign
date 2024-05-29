@@ -1,0 +1,217 @@
+.contact {
+    $this: &;
+
+    .title {
+        @include tablet {
+            margin-bottom: 85px;
+        }
+
+        @include mobile {
+            margin-bottom: 75px;
+        }
+    }
+
+    &__wrapper {
+        display: grid;
+        gap: 0 48px;
+        grid-template-columns: repeat(2, 486px);
+        justify-content: center;
+
+        @include tablet {
+            gap: 40px 0;
+            grid-template-columns: auto;
+        }
+    }
+
+    &__info {
+        display: flex;
+        gap: 68px 0;
+        flex-direction: column;
+
+        @include tablet {
+            transform: translateX(30px);
+        }
+
+        @include mobile {
+            transform: translateX(20px);
+        }
+    }
+
+    &__item {
+        @include flex-v-center;
+        gap: 0 43px;
+
+        @include mobile {
+            gap: 0 32px;
+        }
+    }
+
+    &__icon {
+        display: inline-flex;
+        position: relative;
+
+        &::before {
+            @include absolute(-30px, null, null, -30px);
+            @include size(87px, 93px);
+            background: {
+                image: inline-svg('<svg xmlns="http://www.w3.org/2000/svg" fill="#{$color-1--1}" version="1.1" viewBox="0 0 87.3 93.4"><path d="M54.1,93.3s16.9-1.5,26.1-16c9.2-14.5,7.2-33.7,6-49.3C85,12.4,74.2,1,60.4,0c-13.9-1-16.1,11.1-30.6,18.4-14.5,7.3-19.7,7.1-27.1,21.2s1.5,35.1,19.5,45.3c18,10.2,32,8.3,32,8.3Z"/></svg>');
+                repeat: no-repeat;
+                size: cover;
+            };
+            content: '';
+            z-index: -1;
+
+            @include mobile {
+                @include size(65px, 69px);
+                left: -20px;
+                top: -25px;
+            }
+        }
+
+        svg {
+            @include size(40px);
+            fill: var(--color-1--3);
+
+            @include mobile {
+                @include size(30px);
+            }
+        }
+    }
+
+    &__group {
+        display: flex;
+        gap: 10px 0;
+        flex-direction: column;
+
+        @include mobile {
+            gap: 7px 0;
+        }
+    }
+
+    &__title {
+        @include font(var(--typo-2), 22px, var(--fw-normal));
+        color: var(--color-1--3);
+        text-transform: uppercase;
+
+        @include mobile {
+            font-size: 18px;
+        }
+    }
+
+    &__link {
+        @include on-event {
+            text-decoration: underline;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+
+        @include tablet {
+            align-items: center;
+        }
+    }
+
+    &__input,
+    &__area,
+    &__selected-item {
+        @include font(var(--typo-2), 18px, var(--fw-light));
+        border: 1px solid var(--color-1--2);
+        border-radius: 8px;
+        box-sizing: border-box;
+        color: var(--color-1--4);
+        min-height: 60px;
+        padding: 15px 24px;
+        width: 100%;
+
+        @include tablet {
+            width: 486px;
+        }
+
+        @include mobile {
+            width: 320px;
+        }
+
+        &::placeholder {
+            color: var(--color-1--4);
+        }
+
+        &.is-error {
+            border: 1px solid #e10000;
+        }
+    }
+
+    &__button {
+        margin-top: 10px;
+
+        button {
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    &__custom-select {
+        cursor: pointer;
+        position: relative;
+        width: 100%;
+
+        &::before {
+            @include trs;
+            @include absolute(50%, 24px);
+            @include size(16px, 18px);
+            background: {
+                image: inline-svg('<svg xmlns="http://www.w3.org/2000/svg" fill="#{$color-1--2}" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>');
+                repeat: no-repeat;
+                size: cover;
+            }
+            content: '';
+            transform: translateY(-50%)
+        }
+
+        &.is-open {
+            &::before {
+                transform: translateY(-50%) scale(1, -1);
+            }
+
+            #{$this}__dropdown {
+                max-height: 300px;
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__dropdown {
+        @include absolute(65px, null, null, 0);
+        @include trs();
+        background-color: $color-white;
+        border: 1px solid var(--color-1--2);
+        border-radius: 8px;
+        display: block;
+        max-height: 0;
+        opacity: 0;
+        overflow-y: auto;
+        visibility: hidden;
+        width: 100%;
+        z-index: 3;
+    }
+
+    &__option {
+        @include trs;
+        @include font(var(--typo-2), 18px, var(--fw-light));
+        color: var(--color-1--4);
+        padding: 15px 24px;
+
+        @include on-event {
+            background-color: var(--color-1--1);
+        }
+    }
+
+    .error-message {
+        @include font(var(--typo-2), 14px, var(--fw-regular));
+        color: #e10000;
+        padding-top: 10px;
+    }
+}

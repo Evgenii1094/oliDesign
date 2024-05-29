@@ -1,0 +1,18 @@
+%container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+
+    @include tablet {
+        padding: 0 62px;
+    }
+
+    @include mobile {
+        padding: 0 20px;
+    }
+}
+
+.container {
+    @extend %container;
+}

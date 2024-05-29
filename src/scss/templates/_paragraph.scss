@@ -1,0 +1,16 @@
+.paragraph {
+    @include font(var(--typo-2), 24px, var(--fw-normal));
+    color: $color-3--5;
+
+    @include mobile {
+        font-size: 20px;
+    }
+
+    &.is-small {
+        @include font(var(--typo-2), 20px, var(--fw-light));
+
+        @include mobile {
+            font-size: 18px;
+        }
+    }
+}

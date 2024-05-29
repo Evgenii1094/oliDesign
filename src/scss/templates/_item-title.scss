@@ -1,0 +1,20 @@
+.item-title {
+    @include font(var(--typo-1), 32px, var(--fw-normal));
+    color: var(--color-1--4);
+
+    @include tablet {
+        font-size: 28px;
+    }
+
+    @include mobile {
+        font-size: 24px;
+    }
+
+    &.is-small {
+        @include font(var(--typo-1), 24px, var(--fw-normal));
+    
+        @include mobile {
+            font-size: 22px;
+        }
+    }
+}

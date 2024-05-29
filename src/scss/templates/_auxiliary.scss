@@ -1,0 +1,29 @@
+.overlay {
+    @include fixed(0, null, null, 0);
+    @include trs();
+    @include size(100%, calc(100% - 150px));
+    background-color: var(--color-1--1);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+
+    @include mobile {
+        @include size(100%, calc(100% - 250px));
+    }
+
+    &.is-show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &.is-hide {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.site-wrapper {
+    &.is-fixed {
+        padding-top: 117px;
+    }
+}
